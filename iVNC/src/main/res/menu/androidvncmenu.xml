@@ -1,0 +1,46 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+	<item android:numericShortcut="1"
+        android:alphabeticShortcut="c"
+        android:id="@+id/itemSaveAsCopy"
+        android:title="@string/save_as_copy"
+        android:showAsAction="ifRoom"
+        android:icon="@drawable/ic_menu_copy"/>
+
+    <item android:numericShortcut="2"
+        android:alphabeticShortcut="d"
+        android:id="@+id/itemDeleteConnection"
+        android:title="@string/delete_connection"
+        android:showAsAction="ifRoom"
+        android:icon="@drawable/ic_menu_delete">
+        </item>
+    <item android:id="@+id/itemMainScreenHelp"
+        android:title="@string/main_screen_help"
+        android:showAsAction="ifRoom"
+        android:icon="@drawable/ic_action_help"/>
+
+    <item android:id="@+id/itemExportImport"
+        android:visible="false"
+        android:title="@string/import_export_settings"
+        android:showAsAction="ifRoom"
+        android:icon="@drawable/ic_action_import_export"/>
+
+    <item android:id="@+id/itemMasterPassword"
+        android:title="@string/master_password_enable"
+        android:visible="false"
+        android:showAsAction="ifRoom"
+        android:icon="@drawable/ic_action_lock"/>
+
+    <item android:id="@+id/itemConnect"
+        android:title="@string/menu_connect"
+        app:showAsAction="always"
+        android:showAsAction="always"
+        android:icon="@drawable/ic_action_connect"
+        />
+    <item android:id="@+id/itemSave"
+        android:title="@string/menu_save"
+        app:showAsAction="always"
+        android:showAsAction="always"
+        android:icon="@drawable/ic_action_save"
+        />
+</menu>

@@ -1,0 +1,235 @@
+<!doctype html>
+<html>
+<head>
+    <title>iVnc Help</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="jquery/jquery.mobile-1.3.2.min.css">
+    <script src="jquery/jquery.js"></script>
+    <script src="jquery/jquery.mobile-1.3.2.min.js"></script>
+</head>
+<body>
+    <div data-role="page" id="Manual">
+ 
+        <div data-role="header" data-position="fixed">
+            <h1>Help</h1>
+        </div><!-- /header -->
+ 
+        <div data-role="content">
+            <div data-role="collapsible" data-theme="a" data-content-theme="d">
+                <h4>First time user</h4>
+                <ul>
+                    <li><strong>Set up a new VNC connection:</strong>  You can create a new connection.</li>
+                    <li><strong>Connect Button:</strong> The Connect button will start the VNC client with the currently selected configuration & save the connection.</li>
+                    <li><strong>Save Button:</strong> The Save button will save the VNC client with the currently configuration. Saved connections can be seen in Bookmark View</li>
+                </ul>
+            </div>
+
+            <div data-role="collapsible" data-theme="a" data-content-theme="d">
+                <h4>VNC Connection Type</h4>
+                <ul>
+                    <li><strong>Regular VNC:</strong> Supported by all VNC servers. Lacks encryption. Vulnerable to brute-force attacks due to an 8-character password limitation.</li>
+                    <li><strong>Secure VNC over SSH:</strong> Connects over an encrypted SSH tunnel. Need an SSHD service running as well as a VNC server. As long as the VNC server does not accept connections directly from the Internet, this connection type suffers no known vulnerabilities, as long as you verify the server certificate signature when first connecting.</li>
+                    <li><strong>UltraVNC:</strong> Windows Logon and UltraVNC Repeater options. Using Windows Logon does not suffer from the 8-character password limitation, but this mode offers no encryption, so your session is vulnerable to sniffing.</li>
+                    <li><strong>Secure VNC over AnonTLS:</strong> Regular VNC over a stunnel-equivalent connection. Either need to run stunnel or use a VNC server like Vino which supports AnonTLS out of the box. This mode gives session encryption, but suffers from the 8-character password limitation. Does not prevent man-in-the-middle attacks.</li>
+                    <li><strong>Secure VNC over VeNCrypt:</strong> x509 certificates used. Session encryption and depending on the server configuration can use user/password credentials with no 8-character limitation. This mode prevents man-in-the-middle attacks. Provides session privacy. Servers like x11vnc and TigerVNC support this mode and are as secure as VNC over SSH.</li>
+                </ul>
+            </div>
+
+            <div data-role="collapsible" data-theme="a" data-content-theme="d">
+                <h4>Title</h4>
+                <p>Each connection created have a nickname to easily identify it on the list</p>
+            </div>
+
+            <div data-role="collapsible" data-theme="a" data-content-theme="d">
+                <h4>VNC over SSH Tunnel Settings</h4>
+                <ul>
+                    <li><strong>SSH Server/Port:</strong> The address and port of the SSH server that the connection will be tunnelled through. By default SSH listens on port 22.</li>
+                    <li><strong>Username/Password:</strong> The username and password of the account on the SSH server. The password will be filled in on this page if you haven't quit bVNC since you last entered it.</li>
+                    <li><strong>Manage Key/Use Key:</strong> A button to manage public/private keys, and a checkbox indicating whether to use a key rather than password to authenticate. If you use the Clone button after generating a key-pair, you should be able to paste the public key once connected to the VNC server (the clipboard is synchronized to the server).</li>
+                    <li><strong>Configure AutoX</strong> Can automatically discover existing and optionally create new X sessions on UNIX systems (like NX client). Need x11vnc to find, and Xvfb, Xvnc, or Xdummy installed on the remote system to create sessions. You may have to move away your .dmrc file and add a .xinit file in your home directory if your desktop doesn't look proper or you are getting just an xterm window.</li>
+                </ul>
+            </div>
+
+            <div data-role="collapsible" data-theme="a" data-content-theme="d">
+                <h4>VNC Connection Settings</h4>
+                <ul>
+                    <li><strong>VNC Server/Port:</strong>Enter the host name or IP address and port of the computer running the VNC server. In VNC over SSH mode, this address is as seen from the SSH Server. If the SSH Server and VNC server are the same computer, you can use localhost. VNC servers typically listen starting at port 5900 (the first VNC screen, screen :0).</li>
+                    <li><strong>VNC User:</strong> Enter your Windows/UNIX account username.</li>
+                    <li><strong>VNC Password:</strong> Enter password here. In UltraVNC with Windows Logon/VeNCrypt modes, put your Windows/UNIX account password here. Secure storage is not used for passwords, and the password will be stored only if you check the "Keep" box. The password will be filled in on this page if you haven't quit bVNC since you last entered it.</li>
+
+                </ul>
+            </div>
+
+            <div data-role="collapsible" data-theme="a" data-content-theme="d">
+                <h4>Advanced Settings</h4>
+                <ul>
+                    <li><strong>Color Mode:</strong> The client supports several color modes. Modes with more colors provide a better visual experience at the expense of greater bandwidth and more CPU computation on your device. Some VNC servers do not support all color depths (e.g. OS/X Remote Desktop requires 24-bit color). If you are having trouble connecting, try another color depth.</li>
+                    <li><strong>Use D-Pad for arrows:</strong> Use the D-Pad of your Bluetooth keyboard or arrows on your on-screen keyboard to send arrows to the VNC server.</li>
+                    <li><strong>Rotate D-Pad:</strong> Phones paired with a Bluetooth keyboard may need the keyboard's D-pad to be rotated anti-clockwise to send correct directions to the server.</li>
+                    <li><strong>Local mouse pointer:</strong> Some VNC servers (e.g. OS/X Remote Desktop) will not draw the mouse pointer on the client. Checking this option will cause bVNC to draw a small square at the mouse position.</li>
+                    <li><strong>Auto/Fullscreen Bitmap:</strong> The VNC client uses a bitmap to represent the remote display. For very large remote displays, especially in fit-to-screen mode, you may experience strange visual artifacts when in fit-to-screen mode, due to per-process memory limitations. If that happens, try checking this option. Keep in mind that checking the option may cause iVNC to quit on connection.</li>
+                    <li><strong>Repeater:</strong> Available only in UltraVNC mode. IMPORTANT: If you have an UltraVNC repeater, enter its address and port outside the 'UltraVNC Repeater' dialog and enter the address and port of the actual VNC server inside the 'UltraVNC Repeater' Dialog. Separate VNC server's address and port with a colon, e.g. 192.168.0.100:5900."</li>
+                </ul>
+           </div>
+
+            <div data-role="collapsible" data-theme="a" data-content-theme="d">
+                <h4>Quick Performance Boost</h4>
+                <ul>
+                    <li><strong>Step 1:</strong> Set the Color mode to a lower value from Advanced VNC configuration.</li>
+                    <li><strong>Step 2:</strong> Try removing any desktop background image on the VNC server.</li>
+                    <li><strong>Step 3:</strong> Ensure device has good network connectivity and avoid covering its antenna and reducing the signal strength.</li>
+                </ul>
+            </div>
+
+
+            <!--div data-role="collapsible" data-theme="a" data-content-theme="d">
+                <h4>Accessibility Service (read out notifications)</h4>
+                <p>This feature uses Android accessibility service to read out notifications from many apps while you are connected to a device.  The apps include Gmail, Hangouts, Skype, K9 Mail, Android and Motorola email clients, and Google Keep reminders.  This list may change in the future.  I may also add a feature to have the user select from installed apps in the future. </p>
+                <p>Since this feature utilized the accessibility framework within Android, you must enable bVolume in the accessibility settings menu in the Android settings.  Disabling this feature is done in the same menu by turning OFF bVolume. </p>
+                <p>When a notification comes in, and you have connected to a device (bVolume shows connected) the text that is briefly shown in the notification bar will be read to you.  The text that is shown varies by app.   </p>
+            </div>
+
+            <div data-role="collapsible" data-theme="a" data-content-theme="d">
+                <h4>Database</h4>
+                <p>There is a utility in the options menu to export the database to the SD card as XML or SQLite database.  I found this in an example and decided to implement it.  There is an import feature as well.  This assumes that you exported earlier and it looks in the export directory defined int he application for the file name also defined by the application.  It can only import a SQLite database that was created by the application.   </p>
+                <p>If you just want to start over, you can delete the entire database using the Delete Data in the options menu. </p>
+                <p>Devices in the list on the main screen can be edited or deleted using a short press on the device name. </p>
+            </div>
+
+            <div data-role="collapsible" data-theme="a" data-content-theme="d">
+                <h4>Service</h4>
+                <p>The service is the part of the program that runs in the background and responds to Bluetooth connect and disconnect events.  When the service is running the old media volume will be captured and the media volume will be adjusted on Bluetooth connect based on the device that connected and your settings for that device.  On disconnect the media volume will be restored and the location will be captured.  If the service is not running, none of this will happen.  There is a button on the main screen to start and stop the service.  If the button says "Start Service" then the service is not currently running.  If the button says "Stop Service" then the service is currently running.  If you configured your preferences to start at boot then the service automatically starts when the phone is finished booting up. </p>
+                <p>Android manages it's memory by closing applications that are not currently being viewed by the user.  This can kill the service too.  If you see a notification that the service has started when you did not just start the service, this is what happened.  In order to prevent this, select the "Notify in Foreground".  This will place an icon on the status bar which makes the service act as an active task.  This prevents the other processes from stopping it in most cases.  It is still possible in extreme cases that the service could get stopped.  By default this is disabled in the preferences.  </p>
+            </div>
+
+            <div data-role="collapsible" data-theme="a" data-content-theme="d">
+                <h4>Widget</h4>
+                <p>The widget can be used as a shortcut to view the last stored location.  In order to place the widget on the home screen, do the following: </p>
+                <ol><li>Find a blank place on a home screen (can be any of the home screens) and long press. </li><li>A list of widgets is displayed.  On some devices you may have a few categories of widgets.  Select "Android Widgets" if you have more that one. </li><li>Select "bVolume" widget.  The widget will now be placed where you long pressed. </li></ol>
+            </div>
+
+            <div data-role="collapsible" data-theme="a" data-content-theme="d">
+                <h4>Caveats</h4>
+                <ul>
+                    <li>Long press of a Bluetooth device in the list will show a pop-up window of the details of that device.  There is also a button for the devices last captured location. </li>
+                    <li>Car Mode is supported in Android 2.2 and higher.  This is generally triggered by an application that is preinstalled in your device, but other applications on Android Market will also enter and exit Car Mode. For instance, on the original Droid the application is called "Car Home".   </li>
+                    <li>Droid 2 Car Dock does not trigger Car Mode for some strange reason. You can get other Car Mode applications in the Android market that do trigger Car Mode.  </li>
+                    <li>If you want to trigger a location capture manually, just open and close your Car Mode application. </li>
+                    <li>If the application is killed with a task killer application, the features will not work correctly.  You may not capture a location on disconnect, the volume may be left at the connected setting, etc.  Make sure you add it to the ignore list in your task killer. </li>
+                    <li>The device specific location data is stored in html files.  You can use a file explorer such as ES File Explorer to locate these files. Prior to version 2.0.5 they were stored in a directory called A2DPVol.  Long press the file you are interested in and it will give you the option to create a desktop shortcut for it.  Now anytime you want to see the last stored location of that device, you can just click this icon from the desktop. </li>
+                    <li>Be careful when using the Bluetooth device connect feature.  Make sure you have that device configured properly to prevent any circular loops. For instance, don't have device 1 connect to device 2, and device 2 connect to device 1.  This may cause an infinite loop.  If this happens, get the device out of range so it cannot connect to any Bluetooth devices and reconfigure the devices in bVolume. </li>
+                    <li>When using the Bluetooth device connect feature the first device (usually home dock or car dock but can also be a Bluetooth device) will connect, then drive the connection of the A2DP device.  When that A2DP device connects, it will also trigger a connect in bVolume.  Because of this, configure the A2DP device with the volume adjustment and app launch features (is desired).  If you configure the first device, the 2nd device may override the changes from the 1st device.  Also, the volume will likely get left at max even after disconnect. </li>
+                    <li>The start app on connect feature can start apps but Froyo removed the ability to stop apps that are in the foreground.  bVolume tries to kill it (if you select the "stop app on disconnect" checkbox) using both the apprestart function and the killbackgrundprocess function but if the app is in the foreground these functions will be ignored by Android.  Also, shortcuts or anything that does not have a package cannot be stopped by bVolume once started. </li>
+                    <li>If you have your Bluetooth disabled and a device connects that is using the feature to force connect a Bluetooth device, the Bluetooth will automatically be enabled to allow the connection.  When the first device disconnects, the Bluetooth will be returned to the state it was before connection.  A use case for this is when you have a physical car dock and you force connect a Bluetooth A2DP receiver.  When you put your phone in the car dock your Bluetooth will auto-enable to allow the force connect.  When you remove your phone from the car dock, Bluetooth will return to disabled. </li>
+                </ul>
+
+            </div-->
+        </div><!-- /content -->
+ 
+        <!--div data-role="footer" data-position="fixed">
+            <div data-role="navbar">
+		        <ul>
+			        <li><a href="#Tips">Tips</a></li>
+			        <li><a href="#Reading_Sms">Reading SMS</a></li>
+		        </ul>
+	        </div>
+        </div--><!-- /footer -->
+ 
+    </div><!-- /page -->
+
+    <div data-role="page" id="Tips">
+ 
+        <div data-role="header" data-position="fixed">
+            <h1>Tips</h1>
+        </div><!-- /header -->
+ 
+        <div data-role="content">
+            <div data-role="collapsible" data-theme="a" data-content-theme="d">
+                <h4>My music won't start playing when commended from Bluetooth device</h4>
+                <p>I ran into this issue myself.  I use 2 different music players: Google Play and Amazon.  Amazon does not know what to do if you have not played something since boot.  It just sits there.  Very frustrating when using the car system.  The Amazon player is actually a bit crappy but I like using their cloud and I like purchasing from them.  Google Play creates an "instant mix" if you command play from a Bluetooth device but have not yet selected anything to play.  This is much nicer.  The way I fixed this issue it I have bVolume auto start Google Play Music.  I don't have it start a play list but rather just have it start.  It won't start playing by itself but since it is now in the foreground it sits ready to play your last play list or instant mix when you command play from the Bluetooth device.  You can of course also commend a play list to start but I just don't like to use that functionality since it will always start it from the beginning. </p>
+            </div>
+
+            <div data-role="collapsible" data-theme="a" data-content-theme="d">
+                <h4>My music stutters when playing over Bluetooth</h4>
+                <p>This is a known issue in Android that this app corrects.  Use the "disable WiFi on connect" feature in bVolume.  This is a check box in the edit device screen.  Short click the device in the main screen of bVolume to see the edit device screen.  Make sure the disable WiFi on connect box is checked.  Scroll to the bottom and click save. </p>
+            </div>
+
+            <div data-role="collapsible" data-theme="a" data-content-theme="d">
+                <h4>My Bluetooth music device won't connect when I connect to my car hands free</h4>
+                <p>bVolume has a feature to auto connect another Bluetooth device when the first device connects.  This can be used in several ways. </p>
+                <ul><li>When you use a home dock, car dock, or audio jack you can force connect a Bluetooth device.  The common use case is for car dock.  When you dock your mobile device in a car dock you want to also connect an A2DP receiver.  Use bVolume to respond to car dock (see preferences).  This will add it to the device list.  Now edit the car dock device and use the also connect Bluetooth device to connect to your receiver.  </li><li>You have a Bluetooth device that supports hands free and A2DP but it does not automatically connect to A2DP.  This has been an issue with some devices.  In this case use bVolume to also connect back to the same device.  When the hands free profile connects, it will force connect A2DP. </li></ul>
+            </div>
+
+            <div data-role="collapsible" data-theme="a" data-content-theme="d">
+                <h4>bVolume does not always work</h4>
+                <p>This can happen for several reasons.   </p>
+                <ul><li>If you allow automatic upgrading the app will not restart after the upgrade.  You can fix this by disabling automatic upgrading in Android Market.  Android Market will still notify you that upgrades are available. </li><li>If your device is running low on RAM it will close background apps to free up space.  To help reduce the likelihood of this, use the notify in foreground feature in bVolume.  This will place the icon on the notification bar in Android and keep the app as a foreground app.  Some don't like the icon so I made this configurable but if you choose to not use the icon, you risk the app being killed on you.   </li><li>If you do not auto start bVolume it won't be running when you forget to manually start it.  Always use the start at boot feature to prevent this problem.  Make sure you always install to the internal memory and NOT the SD card. </li><li>If you leave the preferences menu open in bVolume.  When you open the preferences menu it stops the background service.  This is done because the service will need to load the new preferences once you are done editing them.  Anytime you edit the preferences, also use the back key to save them and restart the service.  Don't navigate away from the preferences screen without using the back key. </li></ul>
+            </div>
+
+            <div data-role="collapsible" data-theme="a" data-content-theme="d">
+                <h4>FileNotFound error and no location capture</h4>
+                <p>This happens if the device name contains characters that are not legal in file names.  For instance: "/", "\", or ":".  Rename the device eliminating all of these characters. The illegal names are now renamed automatically. </p>
+            </div>
+
+            <div data-role="collapsible" data-theme="a" data-content-theme="d">
+                <h4>bVolume does not start at boot</h4>
+                <ul><li>Make sure you have the "start at boot" checked in the preferences. </li><li>Make sure you install to the device memory and NOT the SD card.  The SD card is often not mounted until after boot.  Apps on the SD card cannot auto start because of this. I could do like most and just force you to install to local memory but I prefer to give the users freedoms. </li><li>If the app is upgraded, it will not restart by itself.  The next time you boot the device it will work fine. </li></ul>
+            </div>
+
+        </div><!-- /content -->
+ 
+        <div data-role="footer" data-position="fixed">
+            <div data-role="navbar">
+		        <ul>
+			        <li data-theme="a"><a href="#Manual">Manual</a></li>
+			        <li><a href="#Reading_Sms">Reading SMS</a></li>
+		        </ul>
+	        </div>
+        </div><!-- /footer -->
+ 
+    </div><!-- /page -->
+
+    <div data-role="page" id="Reading_Sms">
+ 
+        <div data-role="header" data-position="fixed">
+            <h1>Reading SMS</h1>
+        </div><!-- /header -->
+ 
+        <div data-role="content">
+            <div data-role="collapsible" data-theme="a" data-content-theme="d">
+                <h4>bVolume and TTS</h4>
+                <p>bVolume can use any text-to-speech (TTS) engine for reading text messages (SMS) and Google Talk messages.  This requires several things to work: </p>
+                <ol><li>You must have a TTS engine installed.  Some common ones are Pico and eSpeak.  I use Pico and have good results. </li><li>That TTS engine must be initialized and have downloaded the latest speech data.  This happens automatically in most cases.  You can test for this in Android by going to <tt>[menu button]</tt> then <tt>[voice input and output settings]</tt>.  Click on text-to-speech settings.  At the top click <tt>[listen to example]</tt>.  If this does not work, bVolume wont either. </li><li>You must have a default TTS engine selected.  If you have more than one TTS engine installed, and you don't have a default selected, it will pop up a dialog asking you for which one to use rather than actually reading anything. </li><li>You must enable reading text messages in bVolume.  This is done by checking this box in the preferences in bVolume. </li><li>You must ALSO select read text messages for each device.  This is done by selecting the device in the list and clicking edit in the popup dialog. </li><li>You must select a valid stream.  This is done at the bottom of the preferences menu.  It is called SMS stream.  Depending on your devices, some may not work at all so you will need to try all 3 until you find the one that works best.  You can select the stream in the edit device screen.  Click a device in your list and then click edit when the dialog pops up. </li><li>In the devices you would like TTS to read messages, you need to enable it in the edit device screen.  Make sure you save when done editing!  The save button is at the bottom of this screen. </li></ol>
+                <ul><li>Note: You must have TTS enabled in BOTH the preferences and EACH of the devices you want to read text messages while connected. </li></ul>
+            </div>
+
+            <div data-role="collapsible" data-theme="a" data-content-theme="d">
+                <h4>If it still does not work</h4>
+                <ul><li>Reboot your device. </li><li>If you use Handscent: Handscent =&gt; Settings =&gt; Application Settings =&gt; Default Messaging Application = Disable.  See comment below.  If you have other apps installed that intercept SMS they may have a similar issue. </li><li>Make sure you are watching the Android device screen while trying to read the first text.  If any dialogs pop up, make sure you select a default before clicking OK.    It is common for more than one TTS engine to be installed on your device and if a default is not selected, it will just sit and wait until you select one.  Obviously, don't try this while driving!  Make sure you get it working before you drive anywhere. </li><li>Make sure you have a default TTS engine selected and working. </li><li>Go into <tt>[manage applications]</tt> in Android.  Select your TTS engines and clear defaults.  Then test the TTS engine again as described above.  You will need to select a default again. </li><li>Different devices work with different streams.  Try each of the TTS streams to see which one if any work for you.  This is a configuration in each device in bVolume. Generally A2DP devices use the music stream.  If your device also supports hands free calling you can use the voice call stream.  Try each one.  Make sure to stop and restart the service when you change this configuration.  </li><li>If all else fails, uninstall and reinstall bVolume </li></ul>
+            </div>
+
+            <div data-role="collapsible" data-theme="a" data-content-theme="d">
+                <h4>Known working configurations</h4>
+                <ul>
+                    <li>Droid 3 (Android 2.3.4) with Motorola T605 car kit: Use the Pico TTS engine with any of the 3 streams.  Voice call stream uses the Bluetooth hands free stream (mono).  Music stream will send to the stereo output.  Alarm stream will use the phones speaker. </li>
+                    <li>Droid 2 (Android 2.3.3) with Motorola T605 car kit: Use the Pico TTS engine with any of the 3 streams.  Voice call stream uses the Bluetooth hands free stream (mono).  Music stream will send to the stereo output.  Alarm stream will use the phones speaker. </li>
+                    <li>Droid X (Android 2.2) with Motorola T605 car kit: Use the Pico TTS engine with any of the 3 streams.  Voice call stream uses the Bluetooth hands free stream (mono).  Music stream will send to the stereo output.  Alarm stream will use the phones speaker. </li>
+                    <li>Motorola Xoom WiFi (Android 4.1) with Motorola T605 car kit: There are some issues with Jelly Bean overall though.  Media stream only. </li>
+                    <li>Droid Bionic (Android 2.3.3 and 4.04) with Motorola T605 car kit: Use the Pico TTS engine with any of the 3 streams.  Voice call stream uses the Bluetooth hands free stream (mono).  Music stream will send to the stereo output.  Alarm stream will use the phones speaker. </li>
+                </ul>
+            </div>
+
+        </div><!-- /content -->
+ 
+        <div data-role="footer" data-position="fixed">
+            <div data-role="navbar">
+		        <ul>
+			        <li><a href="#Manual">Manual</a></li>
+			        <li><a href="#Tips">Tips</a></li>
+		        </ul>
+	        </div>
+        </div><!-- /footer -->
+ 
+    </div><!-- /page -->
+</body>
+</html>
